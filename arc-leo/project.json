@@ -1,0 +1,14 @@
+{
+  "project": {
+    "id": "fd0c92e3fa254a8d",
+    "name": "ccube",
+    "description": "chatbot"
+  },
+  "teams": [
+    {
+      "name": "engineering",
+      "kind": "engineering"
+    }
+  ],
+  "promptsBranch": "arc-leo/prompts"
+}
