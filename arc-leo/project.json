@@ -1,12 +1,16 @@
 {
   "project": {
-    "id": "fd0c92e3fa254a8d",
-    "name": "ccube",
-    "description": "chatbot"
+    "id": "49904d7524854edb",
+    "name": "Intelliconnect",
+    "description": "A chatbot able to answer any document or manuals"
   },
   "teams": [
     {
-      "name": "engineering",
+      "name": "Architecture / Security",
+      "kind": "architecture"
+    },
+    {
+      "name": "Engineering",
       "kind": "engineering"
     }
   ],
