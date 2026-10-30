@@ -1,0 +1,92 @@
+{
+  "claude": {
+    "harnessName": "claude",
+    "manifestDir": ".claude-plugin",
+    "harnessLeaf": ".claude",
+    "kind": "store",
+    "installRoots": [
+      ".claude",
+      ".gitignore",
+      ".mcp.json",
+      "arcleo"
+    ]
+  },
+  "codex": {
+    "harnessName": "codex",
+    "manifestDir": ".codex-plugin",
+    "harnessLeaf": ".codex",
+    "kind": "store",
+    "installRoots": [
+      ".agents",
+      ".codex",
+      ".gitignore",
+      "AGENTS.md",
+      "arcleo"
+    ]
+  },
+  "copilot": {
+    "harnessName": "copilot",
+    "manifestDir": ".plugin",
+    "harnessLeaf": ".arcleo",
+    "kind": "store",
+    "installRoots": [
+      ".arcleo",
+      ".github",
+      ".gitignore",
+      ".vscode",
+      "AGENTS.md",
+      "arcleo"
+    ]
+  },
+  "cursor": {
+    "harnessName": "cursor",
+    "manifestDir": ".cursor-plugin",
+    "harnessLeaf": ".cursor",
+    "kind": "cursor",
+    "installRoots": [
+      ".cursor",
+      ".gitignore",
+      "AGENTS.md",
+      "arcleo",
+      "install.ts"
+    ]
+  },
+  "kiro": {
+    "harnessName": "kiro",
+    "manifestDir": ".kiro-plugin",
+    "harnessLeaf": ".kiro",
+    "kind": "kiro",
+    "installRoots": [
+      ".gitignore",
+      ".kiro",
+      "AGENTS.md",
+      "arcleo"
+    ]
+  },
+  "kiro-ide": {
+    "harnessName": "kiro-ide",
+    "manifestDir": ".kiro-plugin",
+    "harnessLeaf": ".kiro",
+    "kind": "kiro-ide",
+    "installRoots": [
+      ".gitignore",
+      ".kiro",
+      "AGENTS.md",
+      "arcleo"
+    ]
+  },
+  "opencode": {
+    "harnessName": "opencode",
+    "manifestDir": ".opencode-plugin",
+    "harnessLeaf": ".arcleo",
+    "kind": "store",
+    "installRoots": [
+      ".arcleo",
+      ".gitignore",
+      ".opencode",
+      "AGENTS.md",
+      "arcleo",
+      "opencode.json"
+    ]
+  }
+}

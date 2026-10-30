@@ -1,0 +1,230 @@
+{
+  "companyAnnouncements": [
+    "# Arcleo — AI-Driven Development Life Cycle\n\nRun `/arcleo` to start or resume a workflow. Describe what to build and Arcleo proposes a plan for you to confirm.\n\n**Phases** (33 stages across 5 phases):\n\n| Phase          | Stages       | Focus                                            |\n|----------------|--------------|--------------------------------------------------|\n| INITIALIZATION | 0.1–0.3 (3)  | Bootstrap state, scaffold dirs, detect workspace |\n| IDEATION       | 1.1–1.7 (7)  | Validate intent, scope, feasibility              |\n| INCEPTION      | 2.1–2.9 (9)  | Practices, requirements, design, planning        |\n| CONSTRUCTION   | 3.1–3.7 (7)  | Build, test, CI — per unit                       |\n| OPERATION      | 4.1–4.7 (7)  | Deploy, observe, optimise                        |\n\n**Stages:**\n\n| Phase        | Stages                                                                                              |\n|--------------|-----------------------------------------------------------------------------------------------------|\n| IDEATION     | IC=Intent Capture · MR=Market Research · FS=Feasibility · SD=Scope Definition                       |\n|              | TF=Team Formation · RM=Rough Mockups · AH=Approval Handoff                                          |\n| INCEPTION    | RE=Reverse Engineering · PD=Practices Discovery · RA=Requirements Analysis · US=User Stories        |\n|              | RF=Refined Mockups · DD=Domain Design · UG=Units Generation · CD=Contract Design · DL=Delivery Planning |\n| CONSTRUCTION | FD=Functional Design · NR=NFR Requirements · ND=NFR Design · ID=Infrastructure Design               |\n|              | CG=Code Generation · BT=Build & Test · CI=CI Pipeline                                               |\n| OPERATION    | DP=Deployment Pipeline · EP=Env Provisioning · DE=Deployment Execution · OS=Observability Setup     |\n|              | IR=Incident Response · PV=Performance Validation · FO=Feedback & Optimization                       |\n\n**Scopes** (INIT 0.1–0.3 always runs):\n\n| Scope          | Depth         | IDEATION       | INCEPTION       | CONSTRUCTION   | OPERATION      |\n|----------------|---------------|----------------|-----------------|----------------|----------------|\n| enterprise     | Comprehensive | all            | all             | all            | all            |\n| feature        | Standard      | all            | all             | all            | all            |\n| mvp            | Standard      | IC, FS, SD, RM | all             | all            | —              |\n| poc            | Minimal       | IC             | RE, RA          | CG, BT         | —              |\n| bugfix         | Minimal       | —              | RE, RA          | CG, BT         | DP, DE         |\n| refactor       | Minimal       | —              | RE, RA          | FD, CG, BT     | DP, DE         |\n| infra          | Standard      | —              | RA              | NR, ND, ID, CI | DP, EP, DE, OS |\n| security-patch | Minimal       | —              | RE              | NR, CG, BT     | DP, DE         |\n| classic        | Standard      | —              | all             | FD, NR, ND, ID, CG, BT            | —            |\n| workshop       | Standard      | —              | all             | all            | all            |\n| express        | Minimal       | —              | RE, RA          | CG, BT         | DP, DE, OS     |\n\n**Workflow**\n\n1. Scope is set from your command, or auto-detected from what you describe.\n2. Stages execute in order, with appropriate agents leading each one.\n3. At every approval gate, you review output and decide whether to approve, revise, or skip.\n4. Artifacts are saved under the active intent record in `arcleo/spaces/<space>/intents/<record>/` for review at any time.\n\n**Tips**\n- Describe your task in plain English — scope is auto-detected\n- Run `/arcleo --status` to check progress at any time\n- Run `/arcleo --stage <id>` or `/arcleo --phase <name>` to jump ahead\n- Run `/arcleo --help` for full usage and examples"
+  ],
+  "permissions": {
+    "allow": [
+      "Edit(/**)",
+      "Task",
+      "WebSearch",
+      "Bash(arcleo engine *)",
+      "Bash(arcleo doctor)",
+      "Bash(arcleo doctor --verbose)",
+      "Bash(arcleo version)",
+      "Bash(arcleo --doctor)",
+      "Bash(arcleo --doctor --verbose)",
+      "Bash(arcleo --version)",
+      "Bash(arcleo status)",
+      "Bash(arcleo --status)",
+      "Bash(arcleo config --help)",
+      "Bash(arcleo config --show)",
+      "Bash(arcleo config --show --json)",
+      "Bash(arcleo config models --show)",
+      "Bash(arcleo config models --show --json)",
+      "Bash(arcleo config models --help)",
+      "Bash(arcleo config runtime --show)",
+      "Bash(arcleo config runtime --show --json)",
+      "Bash(arcleo config runtime --help)",
+      "Bash(arcleo config providers --show)",
+      "Bash(arcleo config providers --show --json)",
+      "Bash(arcleo config providers --help)",
+      "Bash(arcleo config trust --show)",
+      "Bash(arcleo config trust --show --json)",
+      "Bash(arcleo config trust --help)",
+      "Bash(arcleo config flags --show)",
+      "Bash(arcleo config flags --show --json)",
+      "Bash(arcleo config flags --help)",
+      "Bash(arcleo config project --show)",
+      "Bash(arcleo config project --show --json)",
+      "Bash(arcleo config project --help)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_SKIP_ARTIFACT_GUARD --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_SKIP_REVISION_BACKSTOP --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_SKIP_SUMMARY_CONFIRMATION_GUARD --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_SKIP_HUMAN_PRESENCE_GUARD --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_ENSEMBLE_EVIDENCE --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_PLAN_APPROVAL_GUARD --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_REVIEWER_SCOPE_HOOK --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_REVIEW_FREEZE_HOOK --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_USAGE_TRACKING --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_SENSORS --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_LEARNINGS --yes)",
+      "Bash(arcleo config flags --clear-bypass ARCLEO_DISABLE_SUMMARY_CONFIRMATION --yes)"
+    ]
+  },
+  "env": {
+    "AWS_ARCLEO_DEFAULT_SCOPE": "classic"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook fold-usage",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook deliver-stage-rules",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "Read|NotebookRead|Edit|MultiEdit|Write|NotebookEdit|LS|Glob|Grep|Bash|Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook guard-tool-call",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook record-human-turn",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook session-start",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook session-end",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook write-audit-log",
+            "timeout": 1800
+          },
+          {
+            "type": "command",
+            "command": "arcleo engine hook run-sensors",
+            "timeout": 3600
+          }
+        ]
+      },
+      {
+        "matcher": "TaskUpdate",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook sync-workflow-state",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook record-human-turn",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook rebuild-stage-graph",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "Task|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook deliver-stage-rules",
+            "timeout": 1800
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook fold-usage",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook validate-state",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook log-subagent",
+            "timeout": 1800
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "arcleo engine hook continue-workflow",
+            "timeout": 3600
+          }
+        ]
+      }
+    ]
+  }
+}

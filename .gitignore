@@ -1,0 +1,27 @@
+# BEGIN Arcleo:gitignore
+# Arcleo: local working files
+arcleo/active-space
+arcleo/spaces/*/intents/active-intent
+arcleo/.arcleo-clone-id
+arcleo.settings.local.json
+arcleo/.arcleo-unit-scope.json
+arcleo/.arcleo-unit-parked
+arcleo/.arcleo-claim-generations.json
+arcleo/.arcleo-unit-participant
+arcleo/.arcleo-claim-registry.json
+arcleo/.arcleo-unit-releases/
+arcleo/.arcleo-unit-merges/
+arcleo/.arcleo-active-space-*.tmp
+arcleo/active-memory/
+arcleo/.arcleo-sessions/
+arcleo/.arcleo-request-text/
+arcleo/spaces/*/intents/.arcleo-*
+**/arcleo/spaces/*/intents/**/.arcleo-engine/
+**/arcleo/spaces/*/intents/**/.arcleo-sensors/
+arcleo/spaces/*/knowledge/documentkb/.journal/
+arcleo/spaces/*/knowledge/.sources.local.json
+arcleo/spaces/*/intents/*/runtime-graph.json
+arcleo/spaces/*/intents/*/.arcleo-*
+arcleo/diagnostics/
+.claude/settings.local.json
+# END Arcleo:gitignore

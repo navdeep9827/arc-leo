@@ -1,0 +1,185 @@
+// Release channels and the closed version-id grammar shared by the native
+// lifecycle, the release scripts, and the tests. The preview marker is spelled
+// here exactly once; the shell installers and the launcher shims carry their own
+// literal next to a comment that names PREVIEW_CHANNEL.
+//
+// Stable ids are exactly `x.y.z`. Preview ids are
+// `<x.y.(z+1)>-preview.<YYYYMMDD>.<N>`: the next patch after the source tree's
+// current ARCLEO_VERSION, the UTC build date, and a positive build counter for
+// that date. Nothing else is a version anywhere in the install tree, so a
+// version is always a safe directory name by construction.
+import { ARCLEO_VERSION } from "./arcleo-version.ts";
+
+export const STABLE_CHANNEL = "stable";
+export const PREVIEW_CHANNEL = "preview";
+
+export type ReleaseChannel = typeof STABLE_CHANNEL | typeof PREVIEW_CHANNEL;
+
+export const RELEASE_CHANNELS: readonly ReleaseChannel[] = [STABLE_CHANNEL, PREVIEW_CHANNEL];
+
+// Environment variable that stamps a release build with a preview id. The
+// packager renders every projected arcleo-version.ts copy and projection stamp
+// from it; the source tree itself is never modified.
+export const BUILD_VERSION_ENV = "ARCLEO_BUILD_VERSION";
+
+const NUMBER = "(?:0|[1-9]\\d*)";
+const PREVIEW_SUFFIX = `-${PREVIEW_CHANNEL}\\.\\d{8}\\.[1-9]\\d*`;
+
+// Unanchored, capture-free sources for callers that embed the grammar in a
+// larger expression (reservation file names, PowerShell shim checks).
+export const STABLE_VERSION_PATTERN = `${NUMBER}\\.${NUMBER}\\.${NUMBER}`;
+export const PREVIEW_VERSION_PATTERN = `${STABLE_VERSION_PATTERN}${PREVIEW_SUFFIX}`;
+export const VERSION_ID_PATTERN = `${STABLE_VERSION_PATTERN}(?:${PREVIEW_SUFFIX})?`;
+
+export const STABLE_VERSION = new RegExp(`^${STABLE_VERSION_PATTERN}$`);
+export const PREVIEW_VERSION = new RegExp(`^${PREVIEW_VERSION_PATTERN}$`);
+export const VERSION_ID = new RegExp(`^${VERSION_ID_PATTERN}$`);
+
+const PARSED_VERSION = new RegExp(
+  `^(${NUMBER})\\.(${NUMBER})\\.(${NUMBER})(?:-${PREVIEW_CHANNEL}\\.(\\d{8})\\.([1-9]\\d*))?$`,
+);
+// Three 16-digit safe integers, plus "-preview.YYYYMMDD." and a fourth
+// 16-digit build counter. Bound untrusted metadata before regexes or diagnostics.
+const VERSION_ID_MAX_LENGTH = 84;
+
+export type ParsedVersion = {
+  base: string;
+  major: number;
+  minor: number;
+  patch: number;
+  channel: ReleaseChannel;
+  date?: string;
+  build?: number;
+};
+
+export function isReleaseChannel(value: unknown): value is ReleaseChannel {
+  return value === STABLE_CHANNEL || value === PREVIEW_CHANNEL;
+}
+
+export function requireReleaseChannel(value: string): ReleaseChannel {
+  if (!isReleaseChannel(value)) {
+    throw new Error(
+      `invalid release channel "${value}"; expected ${RELEASE_CHANNELS.join(" or ")}`,
+    );
+  }
+  return value;
+}
+
+export function requireVersion(value: string): string {
+  if (typeof value !== "string" || value.length > VERSION_ID_MAX_LENGTH) {
+    throw new Error(`invalid version: identifier must be at most ${VERSION_ID_MAX_LENGTH} characters`);
+  }
+  const match = PARSED_VERSION.exec(value);
+  if (!match) {
+    throw new Error(
+      `invalid version "${value}"; expected x.y.z or x.y.z-${PREVIEW_CHANNEL}.YYYYMMDD.N (for example 2.5.0)`,
+    );
+  }
+  if ([match[1], match[2], match[3], match[5]].some(
+    (part) => part !== undefined && !Number.isSafeInteger(Number(part)),
+  )) {
+    throw new Error("invalid version: numeric components must be safe integers");
+  }
+  return value;
+}
+
+export function parseVersion(value: string): ParsedVersion {
+  const match = PARSED_VERSION.exec(requireVersion(value));
+  if (!match) throw new Error(`invalid version "${value}"`);
+  const [, major, minor, patch, date, build] = match;
+  return {
+    base: `${major}.${minor}.${patch}`,
+    major: Number(major),
+    minor: Number(minor),
+    patch: Number(patch),
+    channel: date === undefined ? STABLE_CHANNEL : PREVIEW_CHANNEL,
+    ...(date === undefined ? {} : { date, build: Number(build) }),
+  };
+}
+
+export function versionChannel(value: string): ReleaseChannel {
+  return parseVersion(value).channel;
+}
+
+// Total order over version ids. Numeric on x.y.z; at an equal base the stable
+// release sorts after every preview built from that base (a preview is built
+// from main before the same version is blessed); previews order by build date
+// then build counter.
+export function compareVersions(left: string, right: string): number {
+  const a = parseVersion(left);
+  const b = parseVersion(right);
+  for (const key of ["major", "minor", "patch"] as const) {
+    if (a[key] !== b[key]) return a[key] < b[key] ? -1 : 1;
+  }
+  if (a.channel !== b.channel) return a.channel === STABLE_CHANNEL ? 1 : -1;
+  if (a.channel === STABLE_CHANNEL) return 0;
+  if (a.date !== b.date) return (a.date as string) < (b.date as string) ? -1 : 1;
+  const aBuild = a.build as number;
+  const bBuild = b.build as number;
+  return aBuild === bBuild ? 0 : aBuild < bBuild ? -1 : 1;
+}
+
+export function utcBuildDate(now: Date = new Date()): string {
+  return now.toISOString().slice(0, 10).replaceAll("-", "");
+}
+
+export function previewVersion(base: string, date: string, build: number): string {
+  if (!STABLE_VERSION.test(base)) {
+    throw new Error(`preview base must be a stable x.y.z version, got "${base}"`);
+  }
+  if (!/^\d{8}$/.test(date)) {
+    throw new Error(`preview build date must be YYYYMMDD, got "${date}"`);
+  }
+  if (!Number.isSafeInteger(build) || build < 1) {
+    throw new Error(`preview build counter must be a positive integer, got ${String(build)}`);
+  }
+  return requireVersion(`${base}-${PREVIEW_CHANNEL}.${date}.${build}`);
+}
+
+export function nextPatchVersion(version: string): string {
+  const parsed = parseVersion(version);
+  if (parsed.channel !== STABLE_CHANNEL) {
+    throw new Error(`next patch base must be a stable x.y.z version, got "${version}"`);
+  }
+  if (!Number.isSafeInteger(parsed.patch) || parsed.patch >= Number.MAX_SAFE_INTEGER) {
+    throw new Error(`cannot increment patch version "${version}" safely`);
+  }
+  return `${parsed.major}.${parsed.minor}.${parsed.patch + 1}`;
+}
+
+// The version a release build stamps into its artifacts. Unset or equal to the
+// source version means an ordinary stable build; a preview id must use the next
+// patch after the source tree's current ARCLEO_VERSION. The preview does not edit
+// that source version or decide whether the eventual stable release is a patch
+// or a minor.
+export function releaseBuildVersion(env: NodeJS.ProcessEnv = process.env): string {
+  const configured = env[BUILD_VERSION_ENV]?.trim();
+  if (!configured || configured === ARCLEO_VERSION) return ARCLEO_VERSION;
+  const parsed = parseVersion(configured);
+  if (parsed.channel !== PREVIEW_CHANNEL) {
+    throw new Error(
+      `${BUILD_VERSION_ENV} must be unset, ${ARCLEO_VERSION}, or a next-patch ${PREVIEW_CHANNEL} id; got "${configured}"`,
+    );
+  }
+  const expectedBase = nextPatchVersion(ARCLEO_VERSION);
+  if (parsed.base !== expectedBase) {
+    throw new Error(
+      `${BUILD_VERSION_ENV} "${configured}" does not use next patch ${expectedBase} after source version ${ARCLEO_VERSION}`,
+    );
+  }
+  return configured;
+}
+
+/** The environment variable that turns preview features on, as a comma list. */
+export const PREVIEW_FEATURES_ENV = "ARCLEO_PREVIEW_FEATURES";
+
+/**
+ * Whether a preview feature is on: only in a preview build, and only when the
+ * person started their tool with the feature named in ARCLEO_PREVIEW_FEATURES.
+ * Read from the process environment alone: a project `.env` cannot set an
+ * ARCLEO_* name (arcleo-runtime-paths.ts drops them), and no setting records it.
+ */
+export function previewFeatureOn(name: string, version: string = ARCLEO_VERSION): boolean {
+  if (versionChannel(version) !== PREVIEW_CHANNEL) return false;
+  return (process.env[PREVIEW_FEATURES_ENV] ?? "").split(",").some((entry) => entry.trim() === name);
+}

@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "distribution": "claude",
+  "productName": "Claude Code",
+  "configNextStep": "open Claude Code in this project (if it is already open in this folder, exit it and start it again) and run `/arcleo --doctor`",
+  "harnessDir": ".claude",
+  "onboarding": ".claude/CLAUDE.md",
+  "managedDirectories": [
+    ".claude",
+    "arcleo"
+  ],
+  "rootIntegrations": [
+    {
+      "path": ".gitignore",
+      "policy": "managed-block",
+      "marker": "gitignore",
+      "shared": "union",
+      "legacySignatures": {
+        "wholeFileHashes": [
+          "sha256:3da36b2d01551aeae2e366caa08be8cce0dbc9110e252445dcaa4e758e24a0b6",
+          "sha256:4f1cd2e930bd37d2f5d715a06ea3fa1e2d39479fc662f0f0562116376132114b",
+          "sha256:f2affb8b34499f057284852456cb8a24ae586b8e816595bf98346141f3516281",
+          "sha256:d397e69ac701a663158ccb43fda3f0a23c86365f29419a8c9a5e3287a490370d",
+          "sha256:87e4c1237816c477096f2291f1204885692bf39e487afb3d9f67cf7e9b2c84fb",
+          "sha256:1d51ae4ca4f74f842336dce75bc66bb4bbf55ce2de7c802ab059504cca99fd7b",
+          "sha256:631688bc85683ea22c9415cb345c69169cff4ac45ec006c258217cd261a7793f",
+          "sha256:051866aa49f8ed915ab5ae30707422068df814ca5be806a1fe28784c543a4aab",
+          "sha256:a618a3a615ef7159c7eed634a5a332bf9d017f8e28d6b0f0adad9db1d2d725e0",
+          "sha256:3cc1cbd212d2ca0dbf1e525eb9a40d4694a585eb7864d8b877f8fe8bd99122dc",
+          "sha256:428158112de19926b050e4209ceb6f141e1286ee62d663c04f95d67dd676ef3a"
+        ]
+      }
+    },
+    {
+      "path": ".mcp.json",
+      "policy": "json-map",
+      "jsonKey": "mcpServers",
+      "optional": true,
+      "legacySignatures": {
+        "jsonEntryHashes": {
+          "context7": [
+            "sha256:8a440d21705f35c8f5649f118d17f786e08d589fb2dd888f5de5aa503233afbf"
+          ],
+          "aws-mcp": [
+            "sha256:d6ff496cb02a8b61d81f8534b179f60e42173ee8510eebe3428bf0bfe30ff0aa"
+          ],
+          "aws-pricing": [
+            "sha256:43bc3467687da178f795ad41ad8767da8b255780f95b64d5c7464b2fbff9ef40"
+          ],
+          "aws-iac": [
+            "sha256:9fea0efb8aea62ec3446cc8201bc74cae477c75d36659b47e93d53981cb94686"
+          ],
+          "aws-serverless": [
+            "sha256:858610c8f5ccbbecc39595fdf866f68d0fb32d62750b3d50ee4bdef7ec1d104b"
+          ]
+        }
+      }
+    }
+  ],
+  "legacyManagedFileHashes": {
+    ".claude/CLAUDE.md": [
+      "sha256:1fe200d5bff18993a4e5c5bc4c251a223f5a660c9b9860535b89c82d60303bb5"
+    ],
+    ".claude/agents/arcleo-composer-agent.md": [
+      "sha256:ca1a4adecf1bddfdf022c1bd6c880d59de81dae50ffa953a0c90c9379e2e3955"
+    ],
+    ".claude/agents/arcleo-pipeline-deploy-agent.md": [
+      "sha256:1341b150d6d731154bf3a55692991e366a059899f5a620a6ed88fc009e79cd0d"
+    ],
+    ".claude/arcleo-common/conductor.md": [
+      "sha256:338ee15ebde7905e616eb3e6f3c5da07c41edb5b50cbff348c0cf95adb851270"
+    ],
+    ".claude/arcleo-common/protocols/stage-definition.md": [
+      "sha256:0a9a183f5e8426279d2011262c1dfa3243c7818b16a619732845e3cf1d2de507"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-checkpoint.md": [
+      "sha256:6c75576178738392747590a0b250b7233814dadf9c514c22b7c61bbb58b75333"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-construction.md": [
+      "sha256:9b7ba637e5650284e29d911a923bc9006d82baa59ec33db00d49cca9fd3cbed9"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-ensemble.md": [
+      "sha256:203fa39a2324f9515feddb1f9230fc486cd189640794089a5e797835e073fc45"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-learnings.md": [
+      "sha256:2680daed37c812c683aaeb751d2714edd459e2b6b33a37df5eb609b1495a4f6a"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-loopback.md": [
+      "sha256:4a81c4fb465ae0f9c551658443637c6c4ae0b02824dd35bb4376e4c111fffeab"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-recovery.md": [
+      "sha256:e7e2666ad7e1f668c73de7981b599cee6936d95377c0fcce11dcf6fded13a50d"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-reviewer.md": [
+      "sha256:2ffb0e3f619bca91eb83a4df60c8c47bcb3961aa3ab74dfdefb99d227f932f8a"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-sensors.md": [
+      "sha256:ed8bc40ccad75caa98f8e0f018da75ae99346938a383f48f102d8bedfdd7f6d2"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-summary.md": [
+      "sha256:2d3263e4ca2490e70aa13bbf0d0fa6da5c78c999aa0bce3fe218ef25c48bfb55"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-swarm.md": [
+      "sha256:1c804187ddad3edeb96c30e15df9ae2079ea7fa136a274aa831ffb62d643599d"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol-wave.md": [
+      "sha256:f33182efaea382f6dce14ca84cd99358fbcd8cda314c63c99f0512fc9adf6c3b"
+    ],
+    ".claude/arcleo-common/protocols/stage-protocol.md": [
+      "sha256:1f7209b49736fb878c7580740d7b5d169530b7f8fab64812b54964fd063fa239"
+    ],
+    ".claude/arcleo-common/stages/construction/build-and-test.md": [
+      "sha256:46be536a62b89380f4a347a821f48b6e80499057fa1aec8737a4a90e5e61a7b9"
+    ],
+    ".claude/arcleo-common/stages/construction/ci-pipeline.md": [
+      "sha256:1fe6b7c7e90d619440421baffaf7d0a75ef988a7bcad7a711e8c53d7d2158305"
+    ],
+    ".claude/arcleo-common/stages/construction/code-generation.md": [
+      "sha256:04bd66f087b5c43718bbb4eb0b5f13100c3c4a4d8263f16f99da497fa45e4483"
+    ],
+    ".claude/arcleo-common/stages/construction/functional-design.md": [
+      "sha256:f9f89682666bb901e9a8a3e228f0b785635445ec3b76d425c61f478fa40d15e7"
+    ],
+    ".claude/arcleo-common/stages/construction/infrastructure-design.md": [
+      "sha256:827226474045ad2317090aa4ef31222693290ee0454d52d8f5e5e940004ff474"
+    ],
+    ".claude/arcleo-common/stages/construction/nfr-design.md": [
+      "sha256:c46c04e02bd1e27c447907f195aa7fb78c21f350addd819122342d77e50bdb8d"
+    ],
+    ".claude/arcleo-common/stages/construction/nfr-requirements.md": [
+      "sha256:ae6273d41455afcd80717e328ee52cc29f1dd937e348ece52bd0517e32fb743a"
+    ],
+    ".claude/arcleo-common/stages/ideation/approval-handoff.md": [
+      "sha256:64e1ddb864925cb3e4a3c6ab2689c96d97fceb32599cdefb7ee5db06086031c0"
+    ],
+    ".claude/arcleo-common/stages/ideation/feasibility.md": [
+      "sha256:8d4bb1d15f9d36a9def46ef0ef140482518a1ce560cd7409d2ca4c491efbec47"
+    ],
+    ".claude/arcleo-common/stages/ideation/intent-capture.md": [
+      "sha256:98d3ab2406664700f744cbd4b447a54fad5bfbf66e8d3ec9e01ae9166615f672"
+    ],
+    ".claude/arcleo-common/stages/ideation/market-research.md": [
+      "sha256:3de499e00c238e13e4d21b21e2f8fc4f3d73d26b3e718154f7567fbd163ad118"
+    ],
+    ".claude/arcleo-common/stages/ideation/rough-mockups.md": [
+      "sha256:617f07419b9e86a597f6726cfce6b49642697f0d30db7c1dbff43874fd278705"
+    ],
+    ".claude/arcleo-common/stages/ideation/scope-definition.md": [
+      "sha256:f2fcf5d3c959946e757e828d1a76f471a0e6f44506368408a62b44143ce4d686"
+    ],
+    ".claude/arcleo-common/stages/ideation/team-formation.md": [
+      "sha256:3f3e2240a39fa82d74de05f8aafc38d8d9ea27296529180787c6d784f45f6b13"
+    ],
+    ".claude/arcleo-common/stages/inception/contract-design.md": [
+      "sha256:60b91defa817376edbb8b3e8d9014066be62965dbf64766fcea3da6dad84ac08"
+    ],
+    ".claude/arcleo-common/stages/inception/delivery-planning.md": [
+      "sha256:cfc6dd1734fea4d094bfcaf880a7af9c422d3bb23c086073c2d92b9126209b80"
+    ],
+    ".claude/arcleo-common/stages/inception/domain-design.md": [
+      "sha256:07c657df44f70f7df347018aa807f387b7e8d584c916ccfc4456f20d75dd4b81"
+    ],
+    ".claude/arcleo-common/stages/inception/practices-discovery.md": [
+      "sha256:eb3d3950585632f7f21cb57cb43d4f33d75cd490b47b7fa53aabe067c4a9107d"
+    ],
+    ".claude/arcleo-common/stages/inception/refined-mockups.md": [
+      "sha256:9d7ed2b8fe1b966a6d280a306d6b5f2038013a88cdbb4c3e8d65b4c492fa6f9b"
+    ],
+    ".claude/arcleo-common/stages/inception/requirements-analysis.md": [
+      "sha256:d5dd4d9250aa07c31111fac2cdf6fb85dc6a63a3cefebc451d0a1a515e175b89"
+    ],
+    ".claude/arcleo-common/stages/inception/reverse-engineering.md": [
+      "sha256:083b28c7e27bb1d846f95c59b80b9ff815ef9d175f3a47d07985bf1c08300375"
+    ],
+    ".claude/arcleo-common/stages/inception/units-generation.md": [
+      "sha256:61650201ad37c67e17153ee6fa7725bf0d8217848c8577568d4af10c4a657c0e"
+    ],
+    ".claude/arcleo-common/stages/inception/user-stories.md": [
+      "sha256:6df96203f8aa17bcdc0ed32456d84efde3a520836193271c834c607c1ddde530"
+    ],
+    ".claude/arcleo-common/stages/initialization/state-init.md": [
+      "sha256:bc2dd5149c174f96d0c3991cc17942a1fcc8fa34f70196737107395a41e1f128"
+    ],
+    ".claude/arcleo-common/stages/initialization/workspace-detection.md": [
+      "sha256:5415d51bc510315b037369073805b186550f0896f6657973ab427a023853b52f"
+    ],
+    ".claude/arcleo-common/stages/operation/deployment-execution.md": [
+      "sha256:3245cd2e89af82f3e192ef9f0cb8488540211d1a7f4a1297730ee98f90f67da1"
+    ],
+    ".claude/arcleo-common/stages/operation/deployment-pipeline.md": [
+      "sha256:5a8a5cbd3548573a1044f0c674609d057037816dfacf6a3828a76640e02bfc6e"
+    ],
+    ".claude/arcleo-common/stages/operation/environment-provisioning.md": [
+      "sha256:45c452e972bb3aa11c96b979eeb9253084778390f775fe152bd3868bde3f32fe"
+    ],
+    ".claude/arcleo-common/stages/operation/feedback-optimization.md": [
+      "sha256:1807e9eb691b17b5c51b8cbc2dfd0608d3e367cb4bbb45512915b93a642e2446"
+    ],
+    ".claude/arcleo-common/stages/operation/incident-response.md": [
+      "sha256:a598c7564c91fcc6bf33cd93e87e3e37c3730cec48bd99a721aab97c6195de29"
+    ],
+    ".claude/arcleo-common/stages/operation/observability-setup.md": [
+      "sha256:aaad92e08c2f9143c42c96bc3b9298c687552a5ddcdc6f04eb472c7558773915"
+    ],
+    ".claude/arcleo-common/stages/operation/performance-validation.md": [
+      "sha256:36326da1957e931b9eae92194ef5e9f29875a0983ed3cb80673212ae61be7d52"
+    ],
+    ".claude/hooks/arcleo-rebuild-stage-graph.ts": [
+      "sha256:7bedb818b478c118c9c1036c31fe2a0c4a1968ea6c4ee983f524eb73dc71de1b"
+    ],
+    ".claude/hooks/arcleo-statusline.ts": [
+      "sha256:5dd296192453eda8b324e87c644a50feef320ade25e6a77b2d9d01326f30e059"
+    ],
+    ".claude/knowledge/arcleo-composer-agent/composing.md": [
+      "sha256:f560c5ae990de5b1abd507515a55120772fe99cd083996d5e1d30982c61555b0"
+    ],
+    ".claude/knowledge/arcleo-developer-agent/re-artifacts.md": [
+      "sha256:2128e0a9dbd114488cc9379be94effe37a8ed6c3e192d0d03caa3653175b7d7e"
+    ],
+    ".claude/knowledge/arcleo-pipeline-deploy-agent/branching-strategies.md": [
+      "sha256:2929f46dcdf19d9252deaa2dbb11bbc0777f728958f6b19b17048e709174a7d0"
+    ],
+    ".claude/knowledge/arcleo-shared/audit-format.md": [
+      "sha256:04d9291da1932ba2738556e545d41c1a074694dc09187c6182bba8d913f800d0"
+    ],
+    ".claude/knowledge/arcleo-shared/state-template.md": [
+      "sha256:a6e022e22aa78f9ebd1ce2b54314570ba4ff876419ef080837e55a8de94d2b89"
+    ],
+    ".claude/knowledge/arcleo-shared/worktree-info-schema.md": [
+      "sha256:65e464c2ba2308d8d7457525f418d61d2b9cbab76ed6ab1bb75f3da5d4b19d32"
+    ],
+    ".claude/sensors/arcleo-claim-sources.md": [
+      "sha256:4b25829b7ee13368e4f9967d9babfea7de8e0de487e6595a4a5c349b5c3656d3"
+    ],
+    ".claude/sensors/arcleo-linter.md": [
+      "sha256:8a2d38ad39be0d5b694e9aaf6c233ae927e464ece2bce0a49a6457442d297e23"
+    ],
+    ".claude/sensors/arcleo-required-sections.md": [
+      "sha256:9ff29f55432b22e07dfbb8f82b9d6df6dce53844e3d2dd7ba37e88d2fb6bd89b"
+    ],
+    ".claude/sensors/arcleo-traceability.md": [
+      "sha256:2e226246216c12824bcee07da64236ac13129c418f18711a85b325dd46747598"
+    ],
+    ".claude/sensors/arcleo-type-check.md": [
+      "sha256:febe1abcc5f3ac6bec8c98b485611bc77987c8acaae6ce5a8424e397019d4edb"
+    ],
+    ".claude/sensors/arcleo-upstream-coverage.md": [
+      "sha256:16eddfdf9dc34b1865e805c59378a4458100be386607a1df0a784c867a718d49"
+    ],
+    ".claude/settings.json": [
+      "sha256:f3b2928c85ea657ee6c90199da5e13a2f8b9dc694690344af90bf4ea2a575695"
+    ],
+    ".claude/skills/arcleo/SKILL.md": [
+      "sha256:389d8c5201d9ce5c286bde112a9d7174a285e1bb23eee4b590bd058101498857"
+    ],
+    ".claude/skills/arcleo/composer.md": [
+      "sha256:4fe4aa94b1cb597114d560320b27731da6377b8ca19f750241eda07c7083324c"
+    ],
+    ".claude/skills/arcleo/tables.md": [
+      "sha256:7cd0cfb1786eb838b5e708ce1b671cff2942373442a4b88888f8254ad9fb4a48"
+    ],
+    ".claude/skills/arcleo-approval-handoff/SKILL.md": [
+      "sha256:d5c31e644ea6cbe396cd7c99925c45e7bad27a3aa9c11a2919dcb860037d5b00"
+    ],
+    ".claude/skills/arcleo-bugfix/SKILL.md": [
+      "sha256:21ca417948a2f0ccf916fd60eff01f95a1e8ec794451311bbdea0098e414c79b"
+    ],
+    ".claude/skills/arcleo-build-and-test/SKILL.md": [
+      "sha256:d3443b85dd4226b056f563dd37391644b9828f4ead11b88b16f6ccd1867ee869"
+    ],
+    ".claude/skills/arcleo-ci-pipeline/SKILL.md": [
+      "sha256:9756164766515076916d375a42672f85a718629851ee8f3eb3f4b316846fa1cc"
+    ],
+    ".claude/skills/arcleo-code-generation/SKILL.md": [
+      "sha256:0baf9467d11fc31233234a2480f12671d60c0d3e4d479b0964449df0256b0b29"
+    ],
+    ".claude/skills/arcleo-compose/SKILL.md": [
+      "sha256:f67e22dc4948ec5b580a48c6832e2ea37b2cc60364078d05198eee17415072e1"
+    ],
+    ".claude/skills/arcleo-contract-design/SKILL.md": [
+      "sha256:a0897f47dcbe2b8af8ec86db639923770484d490ebea05f8387ca56b74247986"
+    ],
+    ".claude/skills/arcleo-delivery-planning/SKILL.md": [
+      "sha256:7ac486fd338b6918c27eae235273b8d838298acfdb55820f5b8de0761559bd6f"
+    ],
+    ".claude/skills/arcleo-deployment-execution/SKILL.md": [
+      "sha256:250d5b4c8f5a9ecb64ba4e85c9136298826866a847be33b25551baf61c5633a0"
+    ],
+    ".claude/skills/arcleo-deployment-pipeline/SKILL.md": [
+      "sha256:22d36fb94ee076f7a6104775c8c409e15eeb7ccef591b970bfda8a738d8c2155"
+    ],
+    ".claude/skills/arcleo-domain-design/SKILL.md": [
+      "sha256:75ec907e10fca91886d28cd8f0bcf1ce0dc1765f397077786a10a522a4b71469"
+    ],
+    ".claude/skills/arcleo-environment-provisioning/SKILL.md": [
+      "sha256:3ff6839806e90101fca8c17ee188f8ce132263b979b67379ef885410d2fda1c8"
+    ],
+    ".claude/skills/arcleo-express/SKILL.md": [
+      "sha256:0b0fa27e56a1d4dfdebc8a4732e86235c5a808b4ee9b8083dd79133a72a79464"
+    ],
+    ".claude/skills/arcleo-feasibility/SKILL.md": [
+      "sha256:29fc261e75c06f7b012cbb0f07a0e680ed1a45eb6e5046e78046218835fbeb3b"
+    ],
+    ".claude/skills/arcleo-feature/SKILL.md": [
+      "sha256:f3221f38dae4f45e8453ab9388608a6f06612444ed401f111ef379c1bdb98c25"
+    ],
+    ".claude/skills/arcleo-feedback-optimization/SKILL.md": [
+      "sha256:7a44c2cdab29ec5b4e933da8104e8f131de1409b18e1a87645ddbbdb75db281d"
+    ],
+    ".claude/skills/arcleo-functional-design/SKILL.md": [
+      "sha256:d1b70154caeae0e978bf89133821606e61ff25496032bc42b905ac419b6b2e7a"
+    ],
+    ".claude/skills/arcleo-incident-response/SKILL.md": [
+      "sha256:852544684cefa8ebdfb653b71bd5a17d146a905674778cbd827762f719833ca7"
+    ],
+    ".claude/skills/arcleo-infrastructure-design/SKILL.md": [
+      "sha256:3d2cf59a815cbff5563b5c2a264fd6375f8949398151e6833b259575d6258a40"
+    ],
+    ".claude/skills/arcleo-init/SKILL.md": [
+      "sha256:9a3d124ff80d0852a84d9c1db95a5854b7753dc58a0ffa740efc5cf664016213"
+    ],
+    ".claude/skills/arcleo-intent-capture/SKILL.md": [
+      "sha256:3e895891c60d35b8f616403788b161f1c2000e9ced096b5df69e8f8911baa337"
+    ],
+    ".claude/skills/arcleo-knowledge/SKILL.md": [
+      "sha256:d14d0574e2925c0bb3b05ef5b3b697c7475fba0d797aeaa5af7ecbd4c68c7aa6"
+    ],
+    ".claude/skills/arcleo-market-research/SKILL.md": [
+      "sha256:2aa2b6774f2409a455ab1876df034cd7b7a80239df4a2fae57522440b6521894"
+    ],
+    ".claude/skills/arcleo-mvp/SKILL.md": [
+      "sha256:a6e15bf68663f47dc0781b3ea455fc0dcb82db100f5b9333fd8dbdbcd96aae03"
+    ],
+    ".claude/skills/arcleo-nfr-design/SKILL.md": [
+      "sha256:6135a70c24e109f0e8a5605261b1bf304b18c98f420cd4f3ad4e02d0bd4c0937"
+    ],
+    ".claude/skills/arcleo-nfr-requirements/SKILL.md": [
+      "sha256:ec2da9712e7244dcff7ba5705387a8c74a6262ca3bbe8489825783ab8ebc778c"
+    ],
+    ".claude/skills/arcleo-observability-setup/SKILL.md": [
+      "sha256:6bb611a4bc310dc6847fe4d6c81ccd3b73f212fe730761dccee40a9f03d2385e"
+    ],
+    ".claude/skills/arcleo-outcomes-pack/SKILL.md": [
+      "sha256:58fbd8300883238d991c01dba98c87127f537665b3ca4d149a6ea8b306e8a66f"
+    ],
+    ".claude/skills/arcleo-performance-validation/SKILL.md": [
+      "sha256:76ceefc3b30349306be8b9b4c1df4416d0e9aeff62556f0970ea481392f44df5"
+    ],
+    ".claude/skills/arcleo-practices-discovery/SKILL.md": [
+      "sha256:d8c7dced7bac72bc7bf18eb9b6b3bd89ed5f4336430ccbf38e1de12a1adaf2b5"
+    ],
+    ".claude/skills/arcleo-refined-mockups/SKILL.md": [
+      "sha256:aeffb889b3b48b4078fb28ca6342a953ebf8a23ce296d38bdc4ce1d8ad1fe4e2"
+    ],
+    ".claude/skills/arcleo-replay/SKILL.md": [
+      "sha256:aafaff69d17ef78012c8b9406017ce512f13c6a13c7382dfde3567f5a0d37d27"
+    ],
+    ".claude/skills/arcleo-requirements-analysis/SKILL.md": [
+      "sha256:6877d4d5b7a16247f5c7e2d085f4bbf0f326dc1b6ed2b2c244b566a9e30fe9fa"
+    ],
+    ".claude/skills/arcleo-reverse-engineering/SKILL.md": [
+      "sha256:cd3b65a6237536a5ac906bf657825fa0c87d6b8959e462309b4d66a86b2db974"
+    ],
+    ".claude/skills/arcleo-rough-mockups/SKILL.md": [
+      "sha256:60322fee05454892d60af2d8d4f43403a7e31feac1d1e551fd218ee5bdb9c9fe"
+    ],
+    ".claude/skills/arcleo-scope-definition/SKILL.md": [
+      "sha256:2b45a8dd66eb8d83f17f3b5648295faebd3c8eb4c4a1b83b2f94d8349e9496fe"
+    ],
+    ".claude/skills/arcleo-security-patch/SKILL.md": [
+      "sha256:ebf48f9f0493ab5850be9645cc9c7e7eebbae74308bdf5af8ec87724ab9227e9"
+    ],
+    ".claude/skills/arcleo-session-cost/SKILL.md": [
+      "sha256:ac3fb26d460faa9843470b67f4047ac9d7efd32be3288cfb090047f8a820e476"
+    ],
+    ".claude/skills/arcleo-team-formation/SKILL.md": [
+      "sha256:191db0190107a37d6caf5dcddcebfbb4b211e900ac65e597f99d03cdda3dda22"
+    ],
+    ".claude/skills/arcleo-units-generation/SKILL.md": [
+      "sha256:312795518377cae72da1cffb0323c0fa41f88d3bc4652ed7709424537dbbdd31"
+    ],
+    ".claude/skills/arcleo-user-stories/SKILL.md": [
+      "sha256:b9d86751fe62244476dea2babad5d56e18e7c9bae94c5409beb2efde61f3303d"
+    ],
+    ".claude/tools/arcleo-command.ts": [
+      "sha256:9d02cd1ad4a73d2cc1b8e986fc7d2c5082b178e91b071e31af549afe4f2f3bc0"
+    ],
+    ".claude/tools/arcleo-runtime-paths.ts": [
+      "sha256:30e584ef045568c4c8cb4fcabcd3ee0221390410154402c5a4b0c3106471753a"
+    ],
+    ".claude/tools/arcleo-utility.ts": [
+      "sha256:bdfc2fa1d0230f530d3469085b1a8486fde551ca94c1a8183d81a9cf525dd691"
+    ],
+    ".claude/tools/data/harness.json": [
+      "sha256:8942300410d4679d877ff03e55222d84d15a7007eb23a3905b5962aca61ad7a4"
+    ],
+    ".claude/tools/data/arcleo-projection.json": [
+      "sha256:23218c15652d1a522c6490e38b87b40ccf1dccc5370d687c2272bc9a60033486"
+    ]
+  }
+}
