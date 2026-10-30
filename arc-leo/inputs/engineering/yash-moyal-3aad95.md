@@ -10,3 +10,10 @@ email: yash.m@ccube.com
 > Any required or forbidden languages, frameworks, services or hosting?
 
 My name is Yash Moyal, I am Engineer
+
+<!-- input:0b95d86314b44587 topic:integrations updated:2026-10-30T07:58:46.952Z -->
+## integrations
+
+> Which existing systems, APIs or data must it connect to?
+
+I am adding software engineer in Indore
